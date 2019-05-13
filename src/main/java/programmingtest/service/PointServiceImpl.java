@@ -42,4 +42,9 @@ public class PointServiceImpl implements PointService {
 		return points;		
 	}
 
+	@Override
+	public void deleteSpace() {
+		points.clear();
+	}
+
 }

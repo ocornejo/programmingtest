@@ -56,4 +56,15 @@ public class PointResourceTest extends JerseyTest {
 		assertEquals("should return status 200", 200, response.getStatus());
 		assertNotNull("Should return points list", response.getEntity().toString());
 	}
+	
+	
+	@Test
+	public void testDeleteSpace() {
+		
+		Point point1 = new Point(8, -2);		
+		target("/point").request().post(Entity.entity(point1, MediaType.APPLICATION_JSON));
+		
+		Response output = target("/space").request().delete();
+		assertEquals("Should return status 204", 204, output.getStatus());
+	}
 }
