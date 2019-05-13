@@ -15,7 +15,7 @@ public class Points {
 
 	private static Points instance = null;
 
-	public Set<Point> points;
+	protected Set<Point> points;
 
 	private Points() {
 		points = new HashSet<Point>();
