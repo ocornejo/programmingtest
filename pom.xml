@@ -59,11 +59,6 @@
 			<artifactId>jersey-media-json-jackson</artifactId>
 			<version>${jersey2.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>commons-beanutils</groupId>
-			<artifactId>commons-beanutils</artifactId>
-			<version>1.9.1</version>
-		</dependency>
 	</dependencies>
 
 	<build>
