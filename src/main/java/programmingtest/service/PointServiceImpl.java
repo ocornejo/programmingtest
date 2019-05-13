@@ -1,6 +1,5 @@
 package programmingtest.service;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.ws.rs.core.Response;
@@ -10,7 +9,7 @@ import programmingtest.figures.Point;
 
 public class PointServiceImpl implements PointService {
 
-	private Set<Point> points = new HashSet<Point>();
+	private Set<Point> points = Points.getInstance().points;
 
 	@Override
 	public void addPoint(Point point) throws AppException {
@@ -36,6 +35,11 @@ public class PointServiceImpl implements PointService {
 					Response.Status.BAD_REQUEST.getStatusCode());
 		}
 
+	}
+
+	@Override
+	public Set<Point> getSpace() {
+		return points;		
 	}
 
 }
