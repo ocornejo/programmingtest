@@ -14,7 +14,7 @@ public class CollinearServiceImpl implements CollinearService {
 
 	private Set<Point> points = Points.getInstance().points;
 
-	private List<TreeSet<Point>> listCollinearSets = new ArrayList<TreeSet<Point>>();
+	private List<TreeSet<Point>> collinearPointSets = new ArrayList<TreeSet<Point>>();
 
 	@Override
 	public List<TreeSet<Point>> getCollinearPointSetForN2() {
@@ -25,7 +25,7 @@ public class CollinearServiceImpl implements CollinearService {
 
 		for (i = 0; i < pointsArray.length; i++) {
 			for (j = i + 1; j < pointsArray.length; j++) {
-				if (hasPoints(pointsArray[i], pointsArray[j], listCollinearSets)) {
+				if (hasPoints(pointsArray[i], pointsArray[j], collinearPointSets)) {
 					break;
 				}
 
@@ -37,7 +37,7 @@ public class CollinearServiceImpl implements CollinearService {
 				addToCollinearSet(collinearPoints);
 			}
 		}
-		return listCollinearSets;
+		return collinearPointSets;
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class CollinearServiceImpl implements CollinearService {
 		for (i = 0; i < pointsArray.length; i++) {
 			for (j = i + 1; j < pointsArray.length; j++) {
 				// skip combination of i and j if those points were already considered
-				if (hasPoints(pointsArray[i], pointsArray[j], listCollinearSets)) {
+				if (hasPoints(pointsArray[i], pointsArray[j], collinearPointSets)) {
 					break;
 				}
 
@@ -72,7 +72,7 @@ public class CollinearServiceImpl implements CollinearService {
 				}
 			}
 		}
-		return listCollinearSets;
+		return collinearPointSets;
 	}
 	
 	/**
@@ -83,7 +83,7 @@ public class CollinearServiceImpl implements CollinearService {
 		boolean hasRemoved = removeSmallerLine(collinearPointsSet);
 
 		if (hasRemoved)
-			listCollinearSets.add(collinearPointsSet);
+			collinearPointSets.add(collinearPointsSet);
 	}
 
 	/**
@@ -95,14 +95,14 @@ public class CollinearServiceImpl implements CollinearService {
 	 */
 	private boolean removeSmallerLine(TreeSet<Point> collinearPoints) {
 
-		if (listCollinearSets.isEmpty())
+		if (collinearPointSets.isEmpty())
 			return true;
 
 		double lengthOfCollinearPoints = distanceService.estimateMaxDistanceSet(collinearPoints);
 
-		for (TreeSet<Point> line : this.listCollinearSets) {
+		for (TreeSet<Point> line : this.collinearPointSets) {
 			if (lengthOfCollinearPoints > distanceService.estimateMaxDistanceSet(line)) {
-				this.listCollinearSets.remove(line);
+				this.collinearPointSets.remove(line);
 				return true;
 			}
 		}
