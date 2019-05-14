@@ -47,7 +47,7 @@ public class LineResourceTest extends JerseyTest {
 		Response response = target("/lines/4").request().get();
 		
 		assertEquals("should return status 200", 200, response.getStatus());
-		assertEquals(response.readEntity(String.class), "[[{\"x\":10000,\"y\":0},{\"x\":7000,\"y\":3000},{\"x\":3000,\"y\":7000},{\"x\":0,\"y\":10000}]]");
+		assertEquals(response.readEntity(String.class), "[[{\"x\":3000,\"y\":4000},{\"x\":6000,\"y\":7000},{\"x\":14000,\"y\":15000},{\"x\":20000,\"y\":21000}]]");
 	}
 
 }
