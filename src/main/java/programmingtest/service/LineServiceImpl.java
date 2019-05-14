@@ -20,9 +20,9 @@ public class LineServiceImpl implements LineService {
 		validateInput(n);
 
 		if (points.size() < 2) {
-			throw new AppException("not enough points", Response.Status.BAD_REQUEST.getStatusCode());
+			throw new AppException("not enough points in the space", Response.Status.BAD_REQUEST.getStatusCode());
 		} else if (n == 2) {
-			return collinearService.getCollinearPointSet2();
+			return collinearService.getCollinearPointSetForN2();
 		} else {
 			return collinearService.getCollinearPointSet(n);
 		}

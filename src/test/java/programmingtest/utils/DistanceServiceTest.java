@@ -1,14 +1,15 @@
-package programmingtest.service;
+package programmingtest.utils;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 import programmingtest.figures.Point;
+import programmingtest.utils.DistanceUtil;
 
 public class DistanceServiceTest {
 	
-	DistanceService distanceService = new DistanceService();
+	DistanceUtil distanceService = new DistanceUtil();
 	
 	@Test
 	public void givenTwoPointsEstimateDistance() {
