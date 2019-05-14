@@ -7,6 +7,7 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
@@ -39,10 +40,9 @@ public class PointResource {
 	public Response getSpace() {
 		
 		Set<Point> pointsInSpace = pointService.getSpace();
-		GenericEntity<Set<Point>> pointsEntity = new GenericEntity<Set<Point>>(pointsInSpace) {};
-
+		
 		return Response.status(Response.Status.OK) // 200
-				.entity(pointsEntity)
+				.entity(new GenericEntity<Set<Point>>(pointsInSpace) {})
 				.build();
 	}
 	
