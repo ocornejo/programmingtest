@@ -7,7 +7,7 @@ import org.junit.Test;
 import programmingtest.figures.Point;
 import programmingtest.utils.DistanceUtil;
 
-public class DistanceServiceTest {
+public class DistanceUtilTest {
 	
 	DistanceUtil distanceService = new DistanceUtil();
 	

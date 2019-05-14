@@ -12,14 +12,10 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 import org.glassfish.jersey.test.TestProperties;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import junitparams.JUnitParamsRunner;
 
 import programmingtest.figures.Point;
 import programmingtest.resource.PointResource;
 
-@RunWith(JUnitParamsRunner.class)
 public class PointResourceTest extends JerseyTest {
 
 	@Override
@@ -37,7 +33,7 @@ public class PointResourceTest extends JerseyTest {
 
 		assertEquals("Should return status 201", 201, output.getStatus());
 	}
-	
+		
 	@Test
 	public void testGetSpace() {
 		

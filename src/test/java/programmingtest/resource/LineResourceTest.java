@@ -11,13 +11,9 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 import org.glassfish.jersey.test.TestProperties;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import junitparams.JUnitParamsRunner;
 
 import programmingtest.figures.Point;
 
-@RunWith(JUnitParamsRunner.class)
 public class LineResourceTest extends JerseyTest {
 
 	@Override
