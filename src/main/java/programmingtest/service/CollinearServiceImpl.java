@@ -21,14 +21,12 @@ public class CollinearServiceImpl implements CollinearService {
 		int i = 0;
 		int j = 0;
 
+		// transform set to array for iteration simplicity
 		Point[] pointsArray = points.toArray(new Point[points.size()]);
 
 		for (i = 0; i < pointsArray.length; i++) {
 			for (j = i + 1; j < pointsArray.length; j++) {
-				if (hasPoints(pointsArray[i], pointsArray[j], collinearPointSets)) {
-					break;
-				}
-
+				
 				TreeSet<Point> collinearPoints = new TreeSet<Point>();
 
 				collinearPoints.add(pointsArray[i]);
@@ -51,11 +49,6 @@ public class CollinearServiceImpl implements CollinearService {
 
 		for (i = 0; i < pointsArray.length; i++) {
 			for (j = i + 1; j < pointsArray.length; j++) {
-				// skip combination of i and j if those points were already considered
-				if (hasPoints(pointsArray[i], pointsArray[j], collinearPointSets)) {
-					break;
-				}
-
 				TreeSet<Point> collinearPoints = new TreeSet<Point>();
 
 				for (k = j + 1; k < pointsArray.length; k++) {
@@ -129,13 +122,4 @@ public class CollinearServiceImpl implements CollinearService {
 		} else
 			return false;
 	}
-
-	private boolean hasPoints(Point point1, Point point2, List<TreeSet<Point>> lisCollinearSets) {
-		for (Set<Point> points : lisCollinearSets) {
-			if (points.contains(point1) || points.contains(point2))
-				return true;
-		}
-		return false;
-	}
-
 }
