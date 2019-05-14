@@ -2,12 +2,13 @@ package programmingtest.service;
 
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 import programmingtest.figures.Point;
 
 public interface CollinearService {
 
-	public List<Set<Point>> getCollinearPointSet(int n);
+	public List<TreeSet<Point>> getCollinearPointSet(int n);
 	
-	public List<Set<Point>> getCollinearPointSet2();
+	public List<TreeSet<Point>> getCollinearPointSet2();
 }

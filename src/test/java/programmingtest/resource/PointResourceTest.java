@@ -1,4 +1,4 @@
-package programmingtest;
+package programmingtest.resource;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -56,7 +56,6 @@ public class PointResourceTest extends JerseyTest {
 		assertEquals("should return status 200", 200, response.getStatus());
 		assertNotNull("Should return points list", response.getEntity().toString());
 	}
-	
 	
 	@Test
 	public void testDeleteSpace() {

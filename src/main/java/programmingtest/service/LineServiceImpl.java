@@ -2,6 +2,7 @@ package programmingtest.service;
 
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 import javax.ws.rs.core.Response;
 
@@ -11,23 +12,20 @@ import programmingtest.figures.Point;
 public class LineServiceImpl implements LineService {
 
 	private Set<Point> points = Points.getInstance().points;
-	private CollinearServiceImpl collinearService = new CollinearServiceImpl();
-	
+	private CollinearService collinearService = new CollinearServiceImpl();
 
 	@Override
-	public List<Set<Point>> getLines(int n) throws AppException {
+	public List<TreeSet<Point>> getLines(int n) throws AppException {
 
 		validateInput(n);
 
 		if (points.size() < 2) {
 			throw new AppException("not enough points", Response.Status.BAD_REQUEST.getStatusCode());
-			
-		} else if (n == 2){
+		} else if (n == 2) {
 			return collinearService.getCollinearPointSet2();
 		} else {
 			return collinearService.getCollinearPointSet(n);
 		}
-		
 
 	}
 
@@ -36,7 +34,5 @@ public class LineServiceImpl implements LineService {
 			throw new AppException("n should be greater or equal than 2", Response.Status.BAD_REQUEST.getStatusCode());
 		}
 	}
-
-
 
 }

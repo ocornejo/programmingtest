@@ -3,7 +3,7 @@ package programmingtest.figures;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class Point {
+public class Point implements Comparable<Point>{
 
 	private Integer x;
 	private Integer y;
@@ -53,6 +53,23 @@ public class Point {
 		if (y != other.y)
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Point other) {
+        if (other == null) {
+            throw new NullPointerException();
+        }
+        
+        if (this.x == other.x && this.y == other.y) {
+            return 0;
+        }
+        //less
+        if (this.y < other.y || (this.y == other.y && this.x < other.x)) {
+            return -1;
+        }
+        //bigger
+        return 1;
 	}
 
 	

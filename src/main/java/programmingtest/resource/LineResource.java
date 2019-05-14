@@ -1,7 +1,7 @@
 package programmingtest.resource;
 
 import java.util.List;
-import java.util.Set;
+import java.util.TreeSet;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -28,8 +28,8 @@ public class LineResource {
 	@Path("/lines/{n}")
 	public Response getLines(@PathParam("n") int n) throws AppException {
 		
-		List<Set<Point>> lines = lineService.getLines(n);
-		GenericEntity<List<Set<Point>>> x = new GenericEntity<List<Set<Point>>>(lines) {};
+		List<TreeSet<Point>> lines = lineService.getLines(n);
+		GenericEntity<List<TreeSet<Point>>> x = new GenericEntity<List<TreeSet<Point>>>(lines) {};
 
 		return Response.status(Response.Status.OK) //200
 				.entity(x)
