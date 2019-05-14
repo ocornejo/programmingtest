@@ -60,15 +60,15 @@ public class Point implements Comparable<Point>{
         if (other == null) {
             throw new NullPointerException();
         }
-        
+        // if they are equal
         if (this.x == other.x && this.y == other.y) {
             return 0;
         }
-        //less
+        // if smaller
         if (this.y < other.y || (this.y == other.y && this.x < other.x)) {
             return -1;
         }
-        //bigger
+        // if bigger
         return 1;
 	}
 

@@ -17,6 +17,12 @@ import programmingtest.figures.Point;
 import programmingtest.service.LineService;
 import programmingtest.service.LineServiceImpl;
 
+/**
+ * Resource that handles the request for analyzing lines
+ * 
+ * @author cornejo
+ *
+ */
 @Path("/")
 @Consumes(value = MediaType.APPLICATION_JSON)
 @Produces(value = MediaType.APPLICATION_JSON)

@@ -18,6 +18,13 @@ import programmingtest.figures.Point;
 import programmingtest.service.PointService;
 import programmingtest.service.PointServiceImpl;
 
+/**
+ * Resource that handles the requests for managing points
+ * 
+ * @author cornejo
+ *
+ */
+
 @Path("/")
 @Consumes(value = MediaType.APPLICATION_JSON)
 @Produces(value = MediaType.APPLICATION_JSON)

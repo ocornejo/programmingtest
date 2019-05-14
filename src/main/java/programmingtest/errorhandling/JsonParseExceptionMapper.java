@@ -8,6 +8,12 @@ import javax.ws.rs.ext.Provider;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
 
+/**
+ * 
+ * Manages the malformed JSON used as input
+ * @author cornejo
+ *
+ */
 @Provider
 @Priority(1)
 public class JsonParseExceptionMapper extends Exception implements ExceptionMapper<JsonMappingException> {
