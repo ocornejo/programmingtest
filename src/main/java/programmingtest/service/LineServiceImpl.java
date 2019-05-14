@@ -12,6 +12,7 @@ import programmingtest.figures.Point;
 public class LineServiceImpl implements LineService {
 
 	private Set<Point> points = Points.getInstance().points;
+	
 	private CollinearService collinearService = new CollinearServiceImpl();
 
 	@Override

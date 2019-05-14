@@ -45,13 +45,13 @@ public class CollinearServiceImpl implements CollinearService {
 		int i = 0;
 		int j = 0;
 		int k = 0;
-
+		
+		// transform set to array for iteration simplicity
 		Point[] pointsArray = points.toArray(new Point[points.size()]);
 
 		for (i = 0; i < pointsArray.length; i++) {
 			for (j = i + 1; j < pointsArray.length; j++) {
-				// Skip the combination of points[i] and points[j] if these two points
-				// are already present in previously calculated collinear set.
+				// skip combination of i and j if those points were already considered
 				if (hasPoints(pointsArray[i], pointsArray[j], listCollinearSets)) {
 					break;
 				}
@@ -65,6 +65,8 @@ public class CollinearServiceImpl implements CollinearService {
 						collinearPoints.add(pointsArray[k]);
 					}
 				}
+				
+				// checks if the set of collinear points has at least N points
 				if (!collinearPoints.isEmpty() && checkHasAtLeastNPoints(collinearPoints, n)) {
 					addToCollinearSet(collinearPoints);
 				}
@@ -72,14 +74,25 @@ public class CollinearServiceImpl implements CollinearService {
 		}
 		return listCollinearSets;
 	}
-
-	private void addToCollinearSet(TreeSet<Point> collinearPoints) {
-		boolean hasRemoved = removeSmallerLine(collinearPoints);
+	
+	/**
+	 * 
+	 * @param collinearPoints
+	 */
+	private void addToCollinearSet(TreeSet<Point> collinearPointsSet) {
+		boolean hasRemoved = removeSmallerLine(collinearPointsSet);
 
 		if (hasRemoved)
-			listCollinearSets.add(collinearPoints);
+			listCollinearSets.add(collinearPointsSet);
 	}
 
+	/**
+	 * 
+	 * Attempts to remove a smaller line in the listCollinearSets
+	 * @param collinearPoints
+	 * @return true if has removed a smaller line, otherwise it returns false
+	 * 
+	 */
 	private boolean removeSmallerLine(TreeSet<Point> collinearPoints) {
 
 		if (listCollinearSets.isEmpty())
@@ -87,15 +100,16 @@ public class CollinearServiceImpl implements CollinearService {
 
 		double lengthOfCollinearPoints = distanceService.estimateMaxDistanceSet(collinearPoints);
 
-		for (TreeSet<Point> setOfPoints : this.listCollinearSets) {
-			if (lengthOfCollinearPoints > distanceService.estimateMaxDistanceSet(setOfPoints)) {
-				this.listCollinearSets.remove(setOfPoints);
+		for (TreeSet<Point> line : this.listCollinearSets) {
+			if (lengthOfCollinearPoints > distanceService.estimateMaxDistanceSet(line)) {
+				this.listCollinearSets.remove(line);
 				return true;
 			}
 		}
 		return false;
 	}
-
+	
+	
 	private boolean checkHasAtLeastNPoints(TreeSet<Point> collinearPoints, int n) {
 		return collinearPoints.size() >= n ? true : false;
 	}
