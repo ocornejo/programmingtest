@@ -35,10 +35,9 @@ public class LineResource {
 	public Response getLines(@PathParam("n") int n) throws AppException {
 		
 		List<TreeSet<Point>> lines = lineService.getLines(n);
-		GenericEntity<List<TreeSet<Point>>> x = new GenericEntity<List<TreeSet<Point>>>(lines) {};
 
 		return Response.status(Response.Status.OK) //200
-				.entity(x)
+				.entity(new GenericEntity<List<TreeSet<Point>>>(lines) {})
 				.build();
 	}
 }
